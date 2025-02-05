@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  
+  labels:
+    name: stage-pod
+  name: stage-pod
+spec:
+  containers:
+  - image: httpd
+    name: stage-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

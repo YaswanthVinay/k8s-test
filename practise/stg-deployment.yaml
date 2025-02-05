@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+
+  labels:
+    app: stg-dep
+  name: stg-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: stg-dep
+  strategy: {}
+  template:
+    metadata:
+      
+      labels:
+        app: stg-dep
+    spec:
+      containers:
+      - image: httpd
+        name: httpd
+        

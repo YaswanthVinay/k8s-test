@@ -1,0 +1,116 @@
+:root {
+    --bg: #0a0a0f;
+    --primary: #00ff9d;
+    --secondary: #7a63ff;
+    --text: rgba(255,255,255,0.9);
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.particles {
+    position: fixed;
+    width: 200vw;
+    height: 200vh;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(122,99,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(0,255,157,0.1) 0%, transparent 50%);
+    animation: gradient-move 20s linear infinite;
+}
+
+.container {
+    position: relative;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.glitch {
+    font-size: 3.5rem;
+    text-align: center;
+    text-shadow: 2px 2px var(--secondary), -2px -2px var(--primary);
+    animation: glitch 2s infinite;
+    margin-bottom: 4rem;
+}
+
+.grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.pulse {
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    margin-top: 1rem;
+    animation: pulse 1.5s infinite;
+}
+
+.cyber-line {
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    margin: 2rem 0;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes gradient-move {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.5; transform: scale(1); }
+}
